@@ -32,10 +32,9 @@ return [
     */
 
     'connections' => [
-
         'sqlite' => [
             'driver' => 'sqlite',
-            'database' => env('DB_DATABASE', database_path('database.sqlite')),
+            'database' => env('DB_DATABASE_TEST', database_path('database.sqlite')),
             'prefix' => '',
         ],
 
