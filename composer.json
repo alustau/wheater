@@ -1,0 +1,14 @@
+{
+    "name": "alustau/wheater",
+    "description": "Search wheater predictions",
+    "type": "project",
+    "require": {
+        "laravel/laravel": "^5.5"
+    },
+    "authors": [
+        {
+            "name": "Denis Alustau",
+            "email": "denisalustau@gmail.com"
+        }
+    ]
+}
