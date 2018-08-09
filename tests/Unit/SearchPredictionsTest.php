@@ -16,7 +16,7 @@ class SearchPredictionsTest extends TestCase
      * @test
      * @return void
      */
-    public function search_predictions_by_city_name()
+    public function count_predictions_by_city_name()
     {
         $city = factory(City::class)->create(['name' => 'Amsterdam']);
         factory(Prediction::class, 4)->create(['city_id' => $city->id]);

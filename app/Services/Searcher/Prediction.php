@@ -5,6 +5,13 @@ use App\Models\Prediction as PredictionModel;
 
 class Prediction
 {
+    protected $model;
+
+    public function __construct()
+    {
+
+    }
+
     public function find($city)
     {
         $predictions = PredictionModel::with('city', 'partner', 'scale')
