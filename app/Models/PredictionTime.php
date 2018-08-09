@@ -16,6 +16,6 @@ class PredictionTime extends Model
 
     public function prediction()
     {
-        return $this->belongsTo(Prediction::class);
+        return $this->belongsTo(Prediction::class, 'prediction_id');
     }
 }

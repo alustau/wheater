@@ -1,8 +1,8 @@
 <?php
-namespace App\Repository;
+namespace App\Repositories;
 
 
-use App\Contracts\Repository\Prediction as Repository;
+use App\Contracts\Repositories\Prediction as Repository;
 use App\Models\Prediction as Model;
 
 class Prediction implements Repository
@@ -16,10 +16,9 @@ class Prediction implements Repository
 
     public function getAllByCityName($name)
     {
-        return $this->model->with('city', 'partner', 'scale')
+        return $this->model->with('city', 'partner', 'scale', 'times')
             ->join('cities as c', 'predictions.city_id', '=', 'c.id')
             ->where('c.name', 'like', "%{$name}%")
-            ->select('predictions.*')
             ->get();
     }
 }

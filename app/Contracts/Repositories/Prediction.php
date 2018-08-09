@@ -1,5 +1,5 @@
 <?php
-namespace App\Contracts\Repository;
+namespace App\Contracts\Repositories;
 
 
 interface Prediction

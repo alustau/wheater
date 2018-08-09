@@ -28,4 +28,9 @@ class Prediction extends Model
     {
         return $this->belongsTo(Partner::class);
     }
+
+    public function times()
+    {
+        return $this->hasMany(PredictionTime::class);
+    }
 }
