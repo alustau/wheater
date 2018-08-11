@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Contracts\Services\Calculator\Result;
 use App\Models\City;
 use App\Models\Prediction;
 use App\Models\PredictionTime;
@@ -39,14 +40,16 @@ class CalculateServiceTest extends TestCase
 
         $service = new CityCalculator();
 
-        $predictions = $service->calculate($data);
+        $result = $service->calculate($data);
 
-        $this->assertEquals(100, $predictions['predictions']->first());
+        $this->assertEquals(100, $result->predictions()->first());
+
+        $this->assertEquals(Carbon::now()->format('Y-m-d'), $result->day());
     }
 
     protected function createFakePredictionsInKelvin($quantity = 1)
     {
-        $date  = Carbon::now()->addHour(rand(1,12));
+        $date  = Carbon::today()->addHour(rand(1,12));
 
         $prediction = [
             'scale_id' => $this->scale->id,

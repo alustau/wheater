@@ -4,5 +4,5 @@ namespace App\Contracts\Services\Calculator;
 
 interface Calculable
 {
-    public function calculate($data);
+    public function calculate($data): Result;
 }

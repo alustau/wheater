@@ -4,13 +4,15 @@ namespace App\Contracts\Services\Calculator;
 
 use Illuminate\Support\Collection;
 
-interface Calculated
+interface Result
 {
-    public function setData(): Calculated;
+    public function setData($result): Result;
 
     public function predictions(): Collection;
 
-    public function day(): Collection;
+    public function scale(): Collection;
 
     public function city(): Collection;
+
+    public function day(): string;
 }
