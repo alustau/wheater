@@ -19,6 +19,7 @@ class Prediction implements Repository
         return $this->model->with('city', 'partner', 'scale', 'times')
             ->join('cities as c', 'predictions.city_id', '=', 'c.id')
             ->where('c.name', 'like', "%{$name}%")
+            ->select('predictions.*')
             ->get();
     }
 }

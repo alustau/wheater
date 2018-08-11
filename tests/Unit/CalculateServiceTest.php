@@ -7,11 +7,10 @@ use App\Models\Prediction;
 use App\Models\PredictionTime;
 use App\Models\Scale;
 use App\Repositories\Prediction as PredictionRepository;
-use App\Services\Calculator\City as CalculatorPrediction;
+use App\Services\Calculator\City as CityCalculator;
 use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use App\Services\Searcher\Prediction as PredictionService;
 
 class CalculateServiceTest extends TestCase
 {
@@ -36,18 +35,18 @@ class CalculateServiceTest extends TestCase
     {
         $models = $this->createFakePredictionsInKelvin(3);
 
-        $predictions = (new PredictionRepository)->getAllByCityName($models[0]->city->name);
+        $data = (new PredictionRepository)->getAllByCityName($models[0]->city->name);
 
-        $service = new CalculatorPrediction();
+        $service = new CityCalculator();
 
-        $service->calculate($predictions);
+        $predictions = $service->calculate($data);
 
-        $this->assertTrue(true);
+        $this->assertEquals(100, $predictions['predictions']->first());
     }
 
     protected function createFakePredictionsInKelvin($quantity = 1)
     {
-        $date = Carbon::now()->addHour(rand(1,12));
+        $date  = Carbon::now()->addHour(rand(1,12));
 
         $prediction = [
             'scale_id' => $this->scale->id,
