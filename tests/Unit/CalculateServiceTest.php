@@ -44,7 +44,7 @@ class CalculateServiceTest extends TestCase
 
         $this->assertEquals(100, $result->predictions()->first());
 
-        $this->assertEquals(Carbon::now()->format('Y-m-d'), $result->day());
+        $this->assertEquals(Carbon::today()->format('Y-m-d'), $result->day());
     }
 
     protected function createFakePredictionsInKelvin($quantity = 1)
