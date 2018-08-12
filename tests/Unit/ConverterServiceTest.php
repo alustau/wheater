@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Repositories\Scale as Repository;
+use App\Services\Converter\Celsius;
 use App\Services\Converter\Fahrenheit;
 use App\Services\Converter\Formula;
 use Tests\TestCase;
@@ -11,6 +12,20 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class ConverterServiceTest extends TestCase
 {
     use DatabaseTransactions;
+
+    /**
+     * @test
+     */
+    public function convert_kelvin_to_celsius()
+    {
+        $scale = (new Repository)->get('Kelvin');
+
+        $service = new Celsius;
+
+        $fahrenheit = $service->convert($scale, 296.15);
+
+        $this->assertEquals(23, $fahrenheit);
+    }
 
     /**
      * @test
