@@ -2,10 +2,10 @@
 namespace App\Services\Calculator\Result;
 
 
-use App\Contracts\Services\Calculator\Result;
+use App\Contracts\Services\Calculator\Resultable;
 use Illuminate\Support\Collection;
 
-class City implements Result
+class City implements Resultable
 {
     protected $result;
 
@@ -14,7 +14,7 @@ class City implements Result
         $this->result = $result ?: collect();
     }
 
-    public function setData($result): Result
+    public function setData($result): Resultable
     {
         $this->result = $result;
 

@@ -2,16 +2,16 @@
 namespace App\Services\Searcher\Output;
 
 
-use App\Contracts\Services\Calculator\Result;
+use App\Contracts\Services\Calculator\Resultable;
 use App\Contracts\Services\Searcher\Output\Formatter;
 use Carbon\Carbon;
 
 class City implements Formatter
 {
-    public function format(Result $result)
+    public function format(Resultable $result)
     {
         $output = [
-            'city' => $result->city()['name'],
+            'city'        => $result->city()['name'],
             'predictions' => []
         ];
 

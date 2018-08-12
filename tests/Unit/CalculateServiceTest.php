@@ -29,7 +29,7 @@ class CalculateServiceTest extends TestCase
      * @test
      * @return void
      */
-    public function calculate_average_in_kelvin()
+    public function calculate_predictions_average_between_partners()
     {
         $models = $this->createFakePredictionsInKelvin(3);
 

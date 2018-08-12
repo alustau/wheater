@@ -2,13 +2,13 @@
 namespace App\Services\Calculator;
 
 
-use App\Contracts\Services\Calculator\Result;
+use App\Contracts\Services\Calculator\Resultable;
 use App\Contracts\Services\Calculator\Calculable;
 use App\Services\Calculator\Result\City as ResultCity;
 
 class City implements Calculable
 {
-    public function calculate($data): Result
+    public function calculate($data): Resultable
     {
         $info = $data->first()->toArray();
 

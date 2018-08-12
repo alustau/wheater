@@ -5,7 +5,6 @@ namespace Tests\Unit;
 use App\Models\City;
 use App\Models\Prediction as Model;
 use App\Models\PredictionTime;
-use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Repositories\Prediction as PredictionRepository;

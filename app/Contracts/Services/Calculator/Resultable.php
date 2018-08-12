@@ -4,9 +4,9 @@ namespace App\Contracts\Services\Calculator;
 
 use Illuminate\Support\Collection;
 
-interface Result
+interface Resultable
 {
-    public function setData($result): Result;
+    public function setData($result): Resultable;
 
     public function predictions(): Collection;
 

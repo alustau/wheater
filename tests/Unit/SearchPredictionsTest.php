@@ -2,7 +2,6 @@
 
 namespace Tests\Unit;
 
-use App\Contracts\Services\Calculator\Calculable;
 use App\Models\City;
 use App\Models\Prediction;
 use App\Services\Calculator\Result\City as CityResult;
@@ -36,7 +35,7 @@ class SearchPredictionsTest extends TestCase
      * @test
      * @return void
      */
-    public function city_output_formatter()
+    public function city_output_format()
     {
         $date  = Carbon::create(2018, 8, 26, 14, 0, 0);
         $date1 = Carbon::create(2018, 8, 26, 15, 0, 0);

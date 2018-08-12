@@ -17,7 +17,6 @@ class CreateScalesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('formula');
-            $table->string('formula_rollback');
 
             $table->timestamps();
         });

@@ -15,18 +15,15 @@ class AddScalesTableSeeder extends Seeder
         $scales = [
             [
                 'name'             => 'Kelvin',
-                'formula'          => 'x',
-                'formula_rollback' => 'x'
+                'formula'          => '$temperature = x;',
             ],
             [
                 'name'             => 'Fahrentheit',
-                'formula'          => '(x + 459.67) / 1.8',
-                'formula_rollback' => '(x * 1.8) - 459.889'
+                'formula'          => '$temperature = (x + 459.67) / 1.8;',
             ],
             [
                 'name'             => 'Celsius',
-                'formula'          => 'x + 273.15',
-                'formula_rollback' => 'x - 273.15'
+                'formula'          => '$temperature = x - 273.15',
             ]
         ];
 

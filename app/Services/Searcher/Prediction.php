@@ -9,6 +9,7 @@ class Prediction
 
     public function __construct()
     {
+        //model configurations
         //instance factory output
         //instance factory calculator
     }
