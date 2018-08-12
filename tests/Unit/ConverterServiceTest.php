@@ -3,8 +3,8 @@
 namespace Tests\Unit;
 
 use App\Repositories\Scale as Repository;
-use App\Services\Converter\Celsius;
-use App\Services\Converter\Fahrenheit;
+use App\Services\Converter\Type\Celsius;
+use App\Services\Converter\Type\Fahrenheit;
 use App\Services\Converter\Formula;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
