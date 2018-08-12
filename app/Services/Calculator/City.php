@@ -27,7 +27,7 @@ class City implements Calculable
     private function info($predictions, $info)
     {
         return $predictions->merge(array_filter($info, function ($data, $key) {
-            return in_array($key, ['date', 'scale', 'city']);
+            return in_array($key, ['scale', 'city']);
         }, ARRAY_FILTER_USE_BOTH));
     }
 

@@ -9,9 +9,9 @@ class City implements Result
 {
     protected $result;
 
-    public function __construct($result)
+    public function __construct($result = null)
     {
-        $this->result = $result;
+        $this->result = $result ?: collect();
     }
 
     public function setData($result): Result

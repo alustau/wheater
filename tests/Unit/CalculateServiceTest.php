@@ -2,20 +2,17 @@
 
 namespace Tests\Unit;
 
-use App\Contracts\Services\Calculator\Result;
 use App\Models\City;
-use App\Models\Prediction;
-use App\Models\PredictionTime;
 use App\Models\Scale;
 use App\Repositories\Prediction as PredictionRepository;
 use App\Services\Calculator\City as CityCalculator;
-use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\Traits\FakePredictions;
 
 class CalculateServiceTest extends TestCase
 {
-    use DatabaseTransactions;
+    use DatabaseTransactions, FakePredictions;
 
     protected $scale;
     protected $city;
@@ -43,26 +40,5 @@ class CalculateServiceTest extends TestCase
         $result = $service->calculate($data);
 
         $this->assertEquals(100, $result->predictions()->first());
-    }
-
-    protected function createFakePredictionsInKelvin($quantity = 1)
-    {
-        $date  = Carbon::today()->addHour(rand(1,12));
-
-        $prediction = [
-            'scale_id' => $this->scale->id,
-            'city_id'  => $this->city->id,
-            'date'     => $date->format('Y-m-d')
-        ];
-
-        return factory(Prediction::class, $quantity)
-            ->create($prediction)
-            ->each(function ($prediction) use ($date) {
-                $prediction->times()->save(new PredictionTime([
-                    'prediction_id' => $prediction->id,
-                    'time'  => $date->format('Y-m-d H:00:00'),
-                    'value' => 100
-                ]));
-            });
     }
 }
