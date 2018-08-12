@@ -9,8 +9,9 @@ class Fahrenheit implements Convertible
 {
     public function convert(Scalable $from, $value)
     {
-        $temperature = Formula::apply($from->formula(), $value);
+        $kelvin = Formula::apply($from->formula(), $value);
 
-        return ($temperature * 1.8) - 459.889;
+        return ($kelvin * 1.8) - 459.889;
     }
 }
+

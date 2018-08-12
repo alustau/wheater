@@ -14,16 +14,16 @@ class AddScalesTableSeeder extends Seeder
     {
         $scales = [
             [
-                'name'             => 'Kelvin',
-                'formula'          => '$temperature = x;',
+                'name'    => 'Kelvin',
+                'formula' => '$temperature = x;',
             ],
             [
-                'name'             => 'Fahrenheit',
-                'formula'          => '$temperature = (x + 459.67) / 1.8;',
+                'name'    => 'Fahrenheit',
+                'formula' => '$temperature = (x + 459.67) / 1.8;',
             ],
             [
-                'name'             => 'Celsius',
-                'formula'          => '$temperature = x + 273.15;',
+                'name'    => 'Celsius',
+                'formula' => '$temperature = x + 273.15;',
             ]
         ];
 

@@ -9,8 +9,8 @@ class Celsius implements Convertible
 {
     public function convert(Scalable $from, $value)
     {
-        $temperature = Formula::apply($from->formula(), $value);
+        $kelvin = Formula::apply($from->formula(), $value);
 
-        return $temperature - 273.15;
+        return $kelvin - 273.15;
     }
 }
