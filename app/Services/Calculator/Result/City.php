@@ -23,25 +23,37 @@ class City implements Result
 
     public function predictions(): Collection
     {
-        if (! $this->result) {
-            return [];
+        if (! isset($this->result['predictions'])) {
+            return collect();
         }
 
         return $this->result['predictions'];
     }
 
-    public function day(): string
-    {
-        return $this->result['date'];
-    }
-
     public function city(): Collection
     {
+        if (! isset($this->result['city'])) {
+            return collect();
+        }
+
         return $this->result['city'];
     }
 
     public function scale(): Collection
     {
-        return $this->result['city'];
+        if (! isset($this->result['scale'])) {
+            return collect();
+        }
+
+        return $this->result['scale'];
+    }
+
+    public function toArray(): array
+    {
+        if (! $this->result) {
+            return [];
+        }
+
+        return $this->result->toArray();
     }
 }

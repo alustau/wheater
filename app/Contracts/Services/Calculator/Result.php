@@ -14,5 +14,5 @@ interface Result
 
     public function city(): Collection;
 
-    public function day(): string;
+    public function toArray(): array;
 }

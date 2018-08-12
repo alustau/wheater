@@ -9,7 +9,8 @@ class Prediction
 
     public function __construct()
     {
-
+        //instance factory output
+        //instance factory calculator
     }
 
     public function find($city)
