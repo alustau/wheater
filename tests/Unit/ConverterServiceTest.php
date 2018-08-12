@@ -16,15 +16,29 @@ class ConverterServiceTest extends TestCase
     /**
      * @test
      */
+    public function convert_celsius_to_fahrenheit()
+    {
+        $scale = (new Repository)->get('Celsius');
+
+        $service = new Fahrenheit;
+
+        $fahrenheit = $service->convert($scale, 23);
+
+        $this->assertEquals(73.181, $fahrenheit);
+    }
+
+    /**
+     * @test
+     */
     public function convert_kelvin_to_celsius()
     {
         $scale = (new Repository)->get('Kelvin');
 
         $service = new Celsius;
 
-        $fahrenheit = $service->convert($scale, 296.15);
+        $celsius = $service->convert($scale, 296.15);
 
-        $this->assertEquals(23, $fahrenheit);
+        $this->assertEquals(23, $celsius);
     }
 
     /**
