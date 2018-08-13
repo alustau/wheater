@@ -14,4 +14,3 @@ class Fahrenheit implements Convertible
         return ($kelvin * 1.8) - 459.889;
     }
 }
-

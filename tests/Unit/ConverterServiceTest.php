@@ -20,11 +20,11 @@ class ConverterServiceTest extends TestCase
      */
     public function convert_celsius_to_fahrenheit()
     {
-        $scale = (new Repository)->get('Celsius');
+        $celsius = (new Repository)->get('Celsius');
 
         $service = new Fahrenheit;
 
-        $fahrenheit = $service->convert($scale, 23);
+        $fahrenheit = $service->convert($celsius, 23);
 
         $this->assertEquals(73.181, $fahrenheit);
     }
@@ -34,11 +34,11 @@ class ConverterServiceTest extends TestCase
      */
     public function convert_kelvin_to_celsius()
     {
-        $scale = (new Repository)->get('Kelvin');
+        $kelvin = (new Repository)->get('Kelvin');
 
         $service = new Celsius;
 
-        $celsius = $service->convert($scale, 296.15);
+        $celsius = $service->convert($kelvin, 296.15);
 
         $this->assertEquals(23, $celsius);
     }
@@ -48,11 +48,11 @@ class ConverterServiceTest extends TestCase
      */
     public function convert_kelvin_to_fahrenheit()
     {
-        $scale = (new Repository)->get('Kelvin');
+        $kelvin = (new Repository)->get('Kelvin');
 
         $service = new Fahrenheit;
 
-        $fahrenheit = $service->convert($scale, 296.15);
+        $fahrenheit = $service->convert($kelvin, 296.15);
 
         $this->assertEquals(73.181, $fahrenheit);
     }
@@ -62,9 +62,9 @@ class ConverterServiceTest extends TestCase
      */
     public function temperature_returned_by_formula()
     {
-        $scale = (new Repository)->get('Kelvin');
+        $kelvin = (new Repository)->get('Kelvin');
 
-        $this->assertEquals(273.15, Formula::apply($scale->formula(), 273.15));
+        $this->assertEquals(273.15, Formula::apply($kelvin->formula(), 273.15));
     }
 
     /**
@@ -72,9 +72,7 @@ class ConverterServiceTest extends TestCase
      */
     public function instance_of_return_of_factory()
     {
-        $factory = new Factory;
-
-        $converter = $factory->converter('Celsius');
+        $converter = (new Factory)->converter('Celsius');
 
         $this->assertInstanceOf(Celsius::class, $converter);
     }
