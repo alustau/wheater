@@ -50,12 +50,9 @@ class SearchPredictionsTest extends TestCase
             ]),
             'scale' => collect([
                 "name" => "Kelvin",
-                "formula" => "x",
-                "formula_rollback" => "x"
+                "formula" => '$temperature = x;',
             ])
         ];
-
-        $output = new CityOutput();
 
         $expected = [
             'city'        => 'Amsterdam',
@@ -83,6 +80,6 @@ class SearchPredictionsTest extends TestCase
             ],
         ];
 
-        $this->assertEquals($expected, $output->format(new CityResult($predictions)));
+        $this->assertEquals($expected, (new CityOutput)->format(new CityResult($predictions)));
     }
 }
