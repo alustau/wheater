@@ -1,11 +1,15 @@
 <?php
 namespace App\Services\Searcher;
 
-use App\Models\Prediction as PredictionModel;
+use App\Contracts\Services\Searcher\Searchable;
 
-class Prediction
+class Prediction implements Searchable
 {
     protected $model;
+
+    protected $factories = [];
+
+    protected $repositories = [];
 
     public function __construct()
     {
@@ -14,14 +18,8 @@ class Prediction
         //instance factory calculator
     }
 
-    public function find($city)
+    public function city($name)
     {
-        $predictions = PredictionModel::with('city', 'partner', 'scale')
-            ->join('cities as c', 'predictions.city_id', '=', 'c.id')
-            ->where('c.name', 'like', "%{$city}%")
-            ->select('predictions.*')
-            ->get();
 
-        return $predictions;
     }
 }

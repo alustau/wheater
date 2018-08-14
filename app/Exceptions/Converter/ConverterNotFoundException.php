@@ -6,8 +6,8 @@ class ConverterNotFoundException extends ConverterException
 {
     protected $message = 'Converter %s not found';
 
-    public function __construct($converter)
+    public function __construct($formatter)
     {
-        parent::__construct(sprintf($this->message, $converter), 400);
+        parent::__construct(sprintf($this->message, $formatter), 400);
     }
 }

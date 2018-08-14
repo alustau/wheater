@@ -2,34 +2,19 @@
 
 namespace Tests\Unit;
 
+use App\Exceptions\Searcher\OutputNotFoundException;
 use App\Models\City;
 use App\Models\Prediction;
 use App\Services\Calculator\Result\City as CityResult;
 use App\Services\Searcher\Output\City as CityOutput;
+use App\Services\Searcher\Output\Factory;
 use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use App\Services\Searcher\Prediction as PredictionService;
 
 class SearchPredictionsTest extends TestCase
 {
     use DatabaseTransactions;
-
-    /**
-     * @test
-     * @return void
-     */
-    public function count_predictions_by_city_name()
-    {
-        $city = factory(City::class)->create(['name' => 'Amsterdam']);
-        factory(Prediction::class, 4)->create(['city_id' => $city->id]);
-
-        $searcher = new PredictionService();
-
-        $predictions = $searcher->find('Amsterdam');
-
-        $this->assertCount(4, $predictions);
-    }
 
     /**
      * @test
@@ -81,5 +66,25 @@ class SearchPredictionsTest extends TestCase
         ];
 
         $this->assertEquals($expected, (new CityOutput)->format(new CityResult($predictions)));
+    }
+
+    /**
+     * @test
+     */
+    public function city_instance_of_return_of_factory_formatters()
+    {
+        $output = (new Factory)->output('City');
+
+        $this->assertInstanceOf(CityOutput::class, $output);
+    }
+
+    /**
+     * @test
+     */
+    public function exception_when_output_doesnt_exist()
+    {
+        $this->expectException(OutputNotFoundException::class);
+
+        (new Factory)->output('Cities');
     }
 }

@@ -4,5 +4,5 @@ namespace App\Contracts\Services\Searcher;
 
 interface Searchable
 {
-    public function find();
+    public function city($name);
 }
