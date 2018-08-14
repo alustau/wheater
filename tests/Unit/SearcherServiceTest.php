@@ -8,13 +8,15 @@ use App\Models\Prediction;
 use App\Services\Calculator\Result\City as CityResult;
 use App\Services\Searcher\Output\City as CityOutput;
 use App\Services\Searcher\Output\Factory;
+use App\Services\Searcher\Prediction as SearcherPrediction;
 use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\Traits\FakePredictions;
 
-class SearchPredictionsTest extends TestCase
+class SearcherServiceTest extends TestCase
 {
-    use DatabaseTransactions;
+    use DatabaseTransactions, FakePredictions;
 
     /**
      * @test
@@ -86,5 +88,15 @@ class SearchPredictionsTest extends TestCase
         $this->expectException(OutputNotFoundException::class);
 
         (new Factory)->output('Cities');
+    }
+
+    /**
+     */
+    public function find_city_predictions()
+    {
+        $this->createFakePredictionsInKelvin(3);
+
+        $searcher = new SearcherPrediction();
+        $searcher->city($this->city->name);
     }
 }

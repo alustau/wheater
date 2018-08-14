@@ -19,14 +19,6 @@ class CalculateServiceTest extends TestCase
     protected $scale;
     protected $city;
 
-    public function setUp()
-    {
-        parent::setUp();
-
-        $this->scale = Scale::where('name', 'Kelvin')->first();
-        $this->city  = factory(City::class)->create();
-    }
-
     /**
      * @test
      */
@@ -40,7 +32,7 @@ class CalculateServiceTest extends TestCase
 
         $result = $service->calculate($data);
 
-        $this->assertEquals(100, $result->predictions()->first());
+        $this->assertEquals(300, $result->predictions()->first());
     }
 
     /**

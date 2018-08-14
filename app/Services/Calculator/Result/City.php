@@ -27,7 +27,9 @@ class City implements Resultable
             return collect();
         }
 
-        return $this->result['predictions'];
+        return $this->result['predictions'] instanceof Collection
+            ? $this->result['predictions']
+            : collect($this->result['predictions']);
     }
 
     public function city(): Collection
@@ -36,7 +38,7 @@ class City implements Resultable
             return collect();
         }
 
-        return $this->result['city'];
+        return collect($this->result['city']);
     }
 
     public function scale(): Collection
@@ -45,7 +47,7 @@ class City implements Resultable
             return collect();
         }
 
-        return $this->result['scale'];
+        return collect($this->result['scale']);
     }
 
     public function toArray(): array

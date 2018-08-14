@@ -2,12 +2,22 @@
 namespace Tests\Traits;
 
 
+use App\Models\City;
 use App\Models\Prediction;
 use App\Models\PredictionTime;
+use App\Models\Scale;
 use Carbon\Carbon;
 
 trait FakePredictions
 {
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->scale = Scale::where('name', 'Kelvin')->first();
+        $this->city  = factory(City::class)->create();
+    }
+
     protected function createFakePredictionsInKelvin($quantity = 1)
     {
         $date  = Carbon::today()->addHour(rand(1,12));
@@ -24,7 +34,7 @@ trait FakePredictions
                 $prediction->times()->save(new PredictionTime([
                     'prediction_id' => $prediction->id,
                     'time'  => $date->format('Y-m-d H:00:00'),
-                    'value' => 100
+                    'value' => 300
                 ]));
             });
     }
