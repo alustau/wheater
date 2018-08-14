@@ -6,8 +6,8 @@ class OutputNotFoundException extends SearcherException
 {
     protected $message = 'Output Formatter %s not found';
 
-    public function __construct($formatter)
+    public function __construct($calculator)
     {
-        parent::__construct(sprintf($this->message, $formatter), 400);
+        parent::__construct(sprintf($this->message, $calculator), 400);
     }
 }
